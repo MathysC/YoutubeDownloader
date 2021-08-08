@@ -26,9 +26,21 @@ class Manager():
 				downloadpath = stream.download(output_path=self.path)
 				print(downloadpath)
 
-	def download_MP3(self):
-		pass		
-
+	def download_MP3(self,url):
+		self.url = url
+		if self.verify_folder() and self.verify_link():
+			try:
+				yt = YouTube(self.url)
+			except VideoUnavailable:
+				IHMError('videoUnavailable_Error')
+				return None
+			finally:
+				print("début du téléchargement")
+				stream = yt.streams.filter(only_audio=True).first()
+				downloadpath = stream.download(output_path=self.path)
+				print(downloadpath)	
+				pre, ext = os.path.splitext(downloadpath)
+				os.rename(downloadpath,pre + '.mp3')
 
 	def select_folder(self,ui):
 		"""
