@@ -3,4 +3,4 @@ mainWindow = Ui_MainWindow()
 
 
 if __name__ == '__main__':
-    mainWindow.start()
+	mainWindow.start()
