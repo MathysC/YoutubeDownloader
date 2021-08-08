@@ -78,6 +78,7 @@ class Ui_MainWindow(object):
 
 		self.manager = Manager()
 		self.pb_mp3.clicked.connect(lambda: self.manager.download_MP3(self.le_link.text()))
+		self.pb_mp4.clicked.connect(lambda: self.manager.download_MP4(self.le_link.text()))
 		self.pb_chooseFolder.clicked.connect(lambda : self.manager.select_folder(self))
 
 	def retranslateUi(self, MainWindow):

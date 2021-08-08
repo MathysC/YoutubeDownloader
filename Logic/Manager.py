@@ -1,20 +1,34 @@
 
 from IHM.IHMError import IHMError
 from PyQt5 import QtWidgets
-
+from pytube import YouTube
 import re # Regular Expression
 import os 
+
+
 class Manager():
 
 	def __init__(self):
-		self.path = "Outcome/MP4" 
-		self.url = None
+		self.path = "" 
+		self.url = ""
 
-	def download_MP4(self):
-		pass
+	def download_MP4(self,url):
+		self.url = url
+		if self.verify_folder() and self.verify_link():
+			try:
+				yt = YouTube(self.url)
+			except VideoUnavailable:
+				IHMError('videoUnavailable_Error')
+				return None
+			finally:
+				print("début du téléchargement")
+				stream = yt.streams.filter(progressive=True, file_extension='mp4').first()
+				downloadpath = stream.download(output_path=self.path)
+				print(downloadpath)
 
-	def download_MP3(self, url):
-		pass
+	def download_MP3(self):
+		pass		
+
 
 	def select_folder(self,ui):
 		"""
@@ -40,6 +54,7 @@ class Manager():
 			IHMError("folder_Error")
 
 		return path_match
+
 	def verify_link(self):
 		"""
 		:param self.url: the 'possible' YouTube URL

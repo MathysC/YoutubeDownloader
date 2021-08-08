@@ -23,3 +23,6 @@ class IHMError():
 
 	def folder_Error(self):
 		return "Le dossier fourni n'est plus valide!"
+
+	def videoUnavailable_Error(self):
+		return "Cette vidéo n'est plus disponible!"
