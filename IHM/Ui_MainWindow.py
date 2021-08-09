@@ -9,7 +9,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Logic.Manager import Manager
-
+import os
 class Ui_MainWindow(object):
 	def setupUi(self, Window):
 		self.MainWindow = Window
@@ -89,7 +89,7 @@ class Ui_MainWindow(object):
 		self.le_link.setText(_translate("MainWindow", "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"))
 		self.l_folderBasic.setText(_translate("MainWindow", "Dossier enregistrement :"))
 		self.pb_chooseFolder.setText(_translate("MainWindow", "Choisir un dossier"))
-		self.l_currentFolder.setText(_translate("MainWindow", "Aucun dossier défini"))
+		self.l_currentFolder.setText(_translate("MainWindow", os.getcwd()))
 		self.pb_mp3.setText(_translate("MainWindow", "MP3"))
 		self.pb_mp4.setText(_translate("MainWindow", "MP4"))
 

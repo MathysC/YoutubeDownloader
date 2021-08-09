@@ -13,12 +13,15 @@ class IHMError():
 			error = getattr(self,typeError) # Get the message for the corresponding error
 			self.msg.setText(error())
 			self.msg.setIcon(QMessageBox.Warning)
-		except KeyError:
-			return None
-		finally:
 			msgPop = self.msg.exec_()
+		except (KeyError,AttributeError) as e:
+			print(f"Wrong typeError : You used {typeError = }")
+			print(e)
 
-	def URL_Error(self):
+	"""
+	Functions that returns a specific message for the type of error
+	"""
+	def URLError(self):
 		return "L'URL fournie n'est pas valide!"
 
 	def folder_Error(self):
