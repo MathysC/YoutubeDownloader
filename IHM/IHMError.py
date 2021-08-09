@@ -22,7 +22,13 @@ class IHMError():
 		return "L'URL fournie n'est pas valide!"
 
 	def folder_Error(self):
-		return "Le dossier fourni n'est plus valide!"
+		return "Le dossier fourni n'est pas valide!"
 
 	def videoUnavailable_Error(self):
 		return "Cette vidéo n'est plus disponible!"
+
+	def fileExistsError_Error(self):
+		return "Ce fichier existe déjà!"
+
+	def random(self):
+		return "Une erreur inconnu est survenue!"
